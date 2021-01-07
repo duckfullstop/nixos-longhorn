@@ -51,3 +51,5 @@ containers:
 ```
 
 You should now be able to apply the manifest and continue with Longhorn setup as normal (in theory).
+
+If you have any issues, please feel free to raise one, but please remember that this is **hacky intentionally** and there is **absolutely no guarantee it will work on your system**.
