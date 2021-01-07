@@ -1,4 +1,4 @@
-# Longhorn on NixOS
+# Longhorn on NixOS
 
 These dockerfiles build some super hacky containers based on Longhorn v1.1.0 that should run on NixOS.
 
