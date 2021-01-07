@@ -39,15 +39,15 @@ In the spec of the `longhorn-manager` daemonset:
 ```yaml
 containers:
   - name: longhorn-manager
-    image: duckfullstop/nixos-longhorn-manager:v1.1.0
+    image: ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.0
     command:
       - longhorn-manager
       - ...
       - --instance-manager-image
-      - duckfullstop/nixos-longhorn-instance-manager:v1_20201216
+      - ghcr.ioduckfullstop/nixos-longhorn-instance-manager:v1_20201216
       - ...
       - --manager-image
-      - duckfullstop/nixos-longhorn-manager:v1.1.0
+      - ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.0
 ```
 
 You should now be able to apply the manifest and continue with Longhorn setup as normal (in theory).
