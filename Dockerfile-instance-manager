@@ -1,0 +1,3 @@
+FROM docker.io/longhornio/longhorn-instance-manager:v1_20201216
+
+ENV PATH="${PATH}:/run/wrappers/bin:/run/current-system/sw/bin"
