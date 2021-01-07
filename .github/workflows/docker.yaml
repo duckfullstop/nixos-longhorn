@@ -2,7 +2,8 @@ name: ci
 
 on:
   push:
-    branches: master
+    branches: 
+      - main
 
 jobs:
   docker-build-manager:
