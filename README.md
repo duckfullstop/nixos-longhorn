@@ -45,6 +45,9 @@ containers:
       - ...
       - --instance-manager-image
       - duckfullstop/nixos-longhorn-instance-manager:v1_20201216
+      - ...
+      - --manager-image
+      - duckfullstop/nixos-longhorn-manager:v1.1.0
 ```
 
 You should now be able to apply the manifest and continue with Longhorn setup as normal (in theory).
