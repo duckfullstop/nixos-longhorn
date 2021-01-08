@@ -14,7 +14,9 @@ These derived containers simply take the existing image and append the necessary
 
 ### The Longer-Term Fix
 
-I'll be submitting an issue to Longhorn in due course to bring this problem up - my suggestion would probably be some kind of NixOS-specific workaround that could be enabled in the manifest where needed.
+~~I'll be submitting an issue to Longhorn in due course to bring this problem up~~ - my suggestion would probably be some kind of NixOS-specific workaround that could be enabled in the manifest where needed.
+
+I've raised an issue upstream to discuss this problem: https://github.com/longhorn/longhorn/issues/2166
 
 ## Usage
 
@@ -48,6 +50,24 @@ containers:
       - ...
       - --manager-image
       - ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.0
+```
+
+In the spec of the `longhorn-driver-deployment` daemonset (probably not necessary, but you might as well while you're here):
+```yaml
+initContainers:
+  - name: wait-longhorn-manager
+    image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
+...
+containers:
+        - name: longhorn-driver-deployer
+          # NixOS specific: oh dear god why
+          image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
+          ...
+          command:
+            - longhorn-manager
+            - -d
+            ...
+            - ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
 ```
 
 You should now be able to apply the manifest and continue with Longhorn setup as normal (in theory).
