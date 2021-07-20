@@ -1,6 +1,6 @@
 # Longhorn on NixOS
 
-These dockerfiles build some super hacky containers based on Longhorn v1.1.0 that should run on NixOS.
+These dockerfiles build some super hacky containers based on Longhorn v1.1.2 that should run on NixOS.
 
 ## Dear god why
 
@@ -41,33 +41,33 @@ In the spec of the `longhorn-manager` daemonset:
 ```yaml
 containers:
   - name: longhorn-manager
-    image: ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.0
+    image: ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.2
     command:
       - longhorn-manager
       - ...
       - --instance-manager-image
-      - ghcr.ioduckfullstop/nixos-longhorn-instance-manager:v1_20201216
+      - ghcr.ioduckfullstop/nixos-longhorn-instance-manager:v1_20210621
       - ...
       - --manager-image
-      - ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.0
+      - ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.2
 ```
 
 In the spec of the `longhorn-driver-deployment` daemonset (probably not necessary, but you might as well while you're here):
 ```yaml
 initContainers:
   - name: wait-longhorn-manager
-    image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
+    image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.2
 ...
 containers:
         - name: longhorn-driver-deployer
           # NixOS specific: oh dear god why
-          image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
+          image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.2
           ...
           command:
             - longhorn-manager
             - -d
             ...
-            - ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.0
+            - ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.2
 ```
 
 You should now be able to apply the manifest and continue with Longhorn setup as normal (in theory).
