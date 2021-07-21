@@ -41,15 +41,15 @@ In the spec of the `longhorn-manager` daemonset:
 ```yaml
 containers:
   - name: longhorn-manager
-    image: ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.2
+    image: ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.2
     command:
       - longhorn-manager
       - ...
       - --instance-manager-image
-      - ghcr.ioduckfullstop/nixos-longhorn-instance-manager:v1_20210621
+      - ghcr.io/duckfullstop/nixos-longhorn-instance-manager:v1_20210621
       - ...
       - --manager-image
-      - ghcr.ioduckfullstop/nixos-longhorn-manager:v1.1.2
+      - ghcr.io/duckfullstop/nixos-longhorn-manager:v1.1.2
 ```
 
 In the spec of the `longhorn-driver-deployment` daemonset (probably not necessary, but you might as well while you're here):
